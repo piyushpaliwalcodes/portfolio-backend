@@ -16,6 +16,6 @@ app.get("/",async(req:express.Request,res:express.Response)=>{
   res.status(200).send("Request reached");
 })
 
-app.listen(process.env.port, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("DB IS CONNECTED TO PORT");
 });
