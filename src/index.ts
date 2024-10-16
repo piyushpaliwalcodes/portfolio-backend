@@ -12,7 +12,9 @@ mongoose
   .then(() => console.log("Mongoose connected successfully"));
 
 app.use("/api/query", QueryRoute);
-app.get("/",async(req:express.Request,res:express.Response))
+app.get("/",async(req:express.Request,res:express.Response)=>{
+  res.status(200).send("Request reached");
+})
 
 app.listen(process.env.port, () => {
   console.log("DB IS CONNECTED TO PORT");
