@@ -1,19 +1,18 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
 const app = express();
 app.use(cors());
 app.use(express.json())
 import QueryRoute from "./routes/query"; // Adjust path if necessary
-
+dotenv.config();
 mongoose
-  .connect(
-    "mongodb+srv://piyushpaliwalofficial868:xkIqoUr7hACQYnSH@cluster0.mwlka.mongodb.net/portfolio_details?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(process.env.MONGODB_CONNECTION_STRING as string)
   .then(() => console.log("Mongoose connected successfully"));
 
 app.use("/api/query", QueryRoute);
 
-app.listen("5000", () => {
-  console.log("DB IS CONNECTED TO PORT 5000");
+app.listen(process.env.port, () => {
+  console.log("DB IS CONNECTED TO PORT");
 });
